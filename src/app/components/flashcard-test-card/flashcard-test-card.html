@@ -1,0 +1,14 @@
+<div class="mx-auto max-w-screen-xl px-4 pt-12 sm:px-6 lg:px-8">
+  <div class="rounded-md border border-gray-100 p-4 bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700">
+    <div class="flex flex-col gap-1.5">
+      <h2 class="self-start text-xl font-medium">{{ question }}</h2>
+      <span (click)="toggleAnswerVisibility()"
+            class="self-end cursor-pointer underline underline-offset-2 text-lg bg-zinc-500 text-gray-300 hover:text-gray-100 dark:bg-gray-300 dark:text-gray-700 hover:dark:text-gray-500">
+        Mostra la risposta
+      </span>
+    </div>
+    @if (isAnswerVisible) {
+      <p class="pt-4 text-lg font-medium">{{ answer }}</p>
+    }
+  </div>
+</div>

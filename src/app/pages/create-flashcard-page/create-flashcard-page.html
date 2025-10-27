@@ -1,0 +1,63 @@
+<section>
+  <app-toggle-theme-btn/>
+
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <header class="text-center">
+      <h2 class="font-bold text-4xl md:text-6xl">Aggiungi nuova flashcard</h2>
+      <p class="text-lg mx-auto mt-4 max-w-md">
+        Inserisci una domanda e una risposta per la nuova flashcard.
+      </p>
+    </header>
+
+    <form [formGroup]="flashcardForm">
+      <label for="question">
+        <span class="text-2xl font-medium"> Domanda </span>
+        <textarea
+          formControlName="question"
+          id="question"
+          [ngClass]="{
+            'border-red-700 border-2': flashcardForm.get('question')?.invalid && flashcardForm.get('question')?.touched,
+            'border-gray-300': !(flashcardForm.get('question')?.invalid && flashcardForm.get('question')?.touched)
+          }"
+          class="mt-1 w-full resize-none rounded shadow-sm sm:text-sm bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 p-2"
+          rows="4"
+          placeholder="Aggiungi una domanda"
+        ></textarea>
+      </label>
+      <label for="answer">
+        <span class="text-2xl font-medium"> Risposta </span>
+        <textarea
+          formControlName="answer"
+          id="answer"
+          [ngClass]="{
+            'border-red-700 border-2': flashcardForm.get('answer')?.invalid && flashcardForm.get('answer')?.touched,
+            'border-gray-300': !(flashcardForm.get('answer')?.invalid && flashcardForm.get('answer')?.touched)
+          }"
+          class="mt-1 w-full resize-none rounded shadow-sm sm:text-sm bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 p-2"
+          rows="4"
+          placeholder="Aggiungi una risposta alla domanda"
+        ></textarea>
+      </label>
+    </form>
+    @if (showAlert) {
+      <app-alert-banner [bannerType]="alertType" [title]="alertTitle" [message]="alertMessage" (onCloseBanner)="closeAlert()"/>
+    }
+    <ul class="mt-8 gap-4 flex justify-center">
+      <li class="h-full w-50">
+        <a (click)="onSubmit()" class="group block overflow-hidden h-full">
+          <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+            <h2 class="text-2xl font-semibold text-stone">Crea</h2>
+          </div>
+        </a>
+      </li>
+      <li class="h-full w-50">
+        <a (click)="onBackBtnClicked()" class="group block overflow-hidden h-full">
+          <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+            <h2 class="text-2xl font-semibold text-stone">Indietro</h2>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</section>

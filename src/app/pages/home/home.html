@@ -1,0 +1,29 @@
+<section>
+  <app-toggle-theme-btn/>
+
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <header class="text-center">
+      <h2 class="text-xl font-bold sm:text-6xl">FlashCards</h2>
+
+      <p class="mx-auto mt-4 max-w-md">
+        Aggiungi nuove raccolte di flashcards o testa le tue conoscenze con una di quelle già presenti.
+      </p>
+    </header>
+
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+      <li class="h-full">
+        <a routerLink="createCollection" class="group block overflow-hidden h-full">
+          <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+            <h2 class="text-2xl font-semibold text-stone">Nuova raccolta</h2>
+          </div>
+        </a>
+      </li>
+
+      @for (collectionCard of data; track collectionCard.id){
+        <app-flashcard-collection-card [collection]="collectionCard"/>
+      }
+
+    </ul>
+  </div>
+</section>

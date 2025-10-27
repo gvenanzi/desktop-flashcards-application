@@ -1,0 +1,8 @@
+<li>
+  <a [routerLink]="['/collection', collection?.id]" class="group block overflow-hidden h-full">
+    <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700">
+      <h2 class="text-xl font-semibold">{{ collection?.name }}</h2>
+      <p class="mt-2 text-md dark:text-gray-500">{{ collection?.description }}</p>
+    </div>
+  </a>
+</li>

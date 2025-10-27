@@ -1,0 +1,65 @@
+<section>
+  <app-toggle-theme-btn/>
+
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <header class="text-center">
+      <h2 class="font-bold text-4xl md:text-6xl">Crea nuova raccolta</h2>
+      <p class="text-lg mx-auto mt-4 max-w-md">
+        Inserisci un titolo e una descrizione per la nuova raccolta.
+      </p>
+    </header>
+
+    <form [formGroup]="flashcardsCollectionForm">
+      <label for="title">
+        <span class="text-2xl font-medium"> Titolo </span>
+        <input
+          formControlName="title"
+          type="text"
+          id="title"
+          [ngClass]="{
+            'border-red-700 border-2': flashcardsCollectionForm.get('title')?.invalid && flashcardsCollectionForm.get('title')?.touched,
+            'border-gray-300': !(flashcardsCollectionForm.get('title')?.invalid && flashcardsCollectionForm.get('title')?.touched)
+          }"
+          class="my-2 w-full rounded shadow-sm bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 px-2 py-2"
+          placeholder="Aggiungi un titolo"
+        />
+      </label>
+
+      <label for="description">
+        <span class="text-2xl font-medium"> Descrizione </span>
+        <input
+          formControlName="description"
+          type="text"
+          id="description"
+          [ngClass]="{
+            'border-red-700 border-2': flashcardsCollectionForm.get('description')?.invalid && flashcardsCollectionForm.get('description')?.touched,
+            'border-gray-300': !(flashcardsCollectionForm.get('description')?.invalid && flashcardsCollectionForm.get('description')?.touched)
+          }"
+          class="my-2 w-full rounded shadow-sm bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 px-2 py-2"
+          placeholder="Aggiungi una descrizione"
+        />
+      </label>
+    </form>
+    @if (showAlert) {
+      <app-alert-banner [bannerType]="alertType" [title]="alertTitle" [message]="alertMessage" (onCloseBanner)="closeAlert()"/>
+    }
+    <ul class="mt-8 gap-4 flex justify-center">
+      <li class="h-full w-50">
+        <a (click)="onSubmit()" class="group block overflow-hidden h-full">
+          <div
+            [ngClass]="{ 'disabled': flashcardsCollectionForm.invalid || flashcardsCollectionForm.untouched }"
+            class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+            <h2 class="text-2xl font-semibold text-stone">Crea</h2>
+          </div>
+        </a>
+      </li>
+      <li class="h-full w-50">
+        <a routerLink="/" class="group block overflow-hidden h-full">
+          <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+            <h2 class="text-2xl font-semibold text-stone">Indietro</h2>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

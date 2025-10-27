@@ -1,0 +1,31 @@
+<section>
+  <app-back-navigation-btn [alertStyle]="true" btnLabel="Termina" (onBackClicked)="saveTestAndLeave()"/>
+  <app-toggle-theme-btn/>
+
+  <div class="mx-auto max-w-screen-xl px-4 pt-8 sm:px-6 sm:pt-12 lg:px-8">
+    <header class="text-center">
+      <h2 class="font-bold text-4xl md:text-6xl">Flashcard {{ currentFlashcardIndex +1 }} di {{ flashcardList.length }}</h2>
+    </header>
+  </div>
+</section>
+@if (flashcardList.length > 0) {
+  <app-flashcard-test-card [question]="flashcardList[currentFlashcardIndex].question" [answer]="flashcardList[currentFlashcardIndex].answer"/>
+  <div class="mx-auto max-w-screen-xl px-4 pt-8 sm:px-6 lg:px-8">
+  <ul class="mt-8 gap-4 flex justify-center">
+    <li class="h-full w-50">
+      <a (click)="updateFlashcard(true)" class="group block overflow-hidden h-full">
+        <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+          <h2 class="text-2xl font-semibold text-stone">Ok</h2>
+        </div>
+      </a>
+    </li>
+    <li class="h-full w-50">
+      <a (click)="updateFlashcard(false)" class="group block overflow-hidden h-full">
+        <div class="rounded-lg p-6 shadow bg-zinc-500 text-gray-300 dark:bg-gray-300 dark:text-gray-700 h-full flex items-center justify-center text-center">
+          <h2 class="text-2xl font-semibold text-stone">Da rivedere</h2>
+        </div>
+      </a>
+    </li>
+  </ul>
+  </div>
+}

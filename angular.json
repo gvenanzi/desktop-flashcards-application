@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "desktop-wildcard-application": {
+    "desktop-flashcards-application": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "baseHref": "./",
+            "outputPath": "dist/desktop-flashcards-application",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -56,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "desktop-wildcard-application:build:production"
+              "buildTarget": "desktop-flashcards-application:build:production"
             },
             "development": {
-              "buildTarget": "desktop-wildcard-application:build:development"
+              "buildTarget": "desktop-flashcards-application:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,5 +91,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

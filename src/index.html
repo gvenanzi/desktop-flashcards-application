@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>DesktopWildcardApplication</title>
+  <title>Wildcards</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+<body class="bg-slate-300 text-zinc-700 dark:bg-zinc-600 dark:text-gray-300">
   <app-root></app-root>
+
+  <script>
+    localStorage.setItem('theme', 'dark')
+    document.documentElement.classList.add('dark');
+  </script>
 </body>
 </html>
